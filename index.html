@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kuzei13 | Giới thiệu</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    body {
+      font-family: "Space Grotesk", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.15), transparent 50%), #020617;
+      color: #e2e8f0;
+      min-height: 100vh;
+    }
+    .panel {
+      background: rgba(2, 6, 23, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 1.5rem;
+      padding: clamp(2rem, 4vw, 3rem);
+      box-shadow: 0 20px 45px rgba(2, 6, 23, 0.7);
+    }
+    .card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 1.1rem;
+      padding: 1.4rem;
+    }
+    .link-tile {
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .link-tile:hover {
+      transform: translateY(-4px);
+      border-color: rgba(103, 232, 249, 0.65);
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center px-6 py-10">
+  <main class="panel w-full max-w-3xl space-y-10">
+    <header class="space-y-4">
+      <div class="flex justify-end">
+        <button id="lang-toggle" class="px-4 py-1 text-xs font-semibold tracking-widest text-slate-900 bg-cyan-300 rounded-full transition hover:bg-cyan-200">
+          EN
+        </button>
+      </div>
+      <p class="text-sm uppercase tracking-[0.4em] text-slate-400" data-i18n="greeting">Xin chào</p>
+      <h1 class="text-4xl md:text-5xl font-semibold leading-tight" data-i18n="introHeading" data-i18n-type="html">
+        Tôi là <span class="text-cyan-300">kuzei13</span>, chỉ là một dev ngẫu nhiên ở Việt Nam.
+      </h1>
+      <p class="text-lg text-slate-300" data-i18n="introDescription">
+        Mình dành kha khá thời gian để chơi game và nghịch code (dù không hẳn là mê lắm), nhưng đã làm thì vẫn phải chất lượng.
+      </p>
+    </header>
+
+    <section class="card space-y-4">
+      <h2 class="text-xl font-semibold" data-i18n="dailyTitle">Ngày thường của mình</h2>
+      <ul class="space-y-3 text-slate-300 list-disc list-inside">
+        <li data-i18n="dailyItem1">Hay chơi Roblox cực nhiều, đôi lúc chuyển qua Minecraft hay ULTRAKILL.</li>
+        <li data-i18n="dailyItem2">Nghịch vài project linh tinh như bot Discord hay web meh cho vui.</li>
+        <li data-i18n="dailyItem3">Online gần như 24/7 ở Discord hoặc TikTok vì mình thích thế lmao.</li>
+      </ul>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold" data-i18n="contactTitle">Liên hệ với mình</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div class="card link-tile">
+          <p class="text-sm text-slate-400">Discord</p>
+          <a href="https://discord.com/users/meotoru" target="_blank" class="text-lg font-medium text-cyan-200">meotoru</a>
+        </div>
+        <div class="card link-tile">
+          <p class="text-sm text-slate-400">YouTube</p>
+          <a href="https://youtube.com/@kuzei13" target="_blank" class="text-lg font-medium text-cyan-200">kuzei13</a>
+        </div>
+        <div class="card link-tile">
+          <p class="text-sm text-slate-400">TikTok</p>
+          <a href="https://www.tiktok.com/@kuzei13.tiktok" target="_blank" class="text-lg font-medium text-cyan-200">kuzei13.tiktok</a>
+        </div>
+        <div class="card link-tile">
+          <p class="text-sm text-slate-400">Email</p>
+          <a href="mailto:red@kuzei.xyz" class="text-lg font-medium text-cyan-200">red@kuzei.xyz</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const translations = {
+      vi: {
+        greeting: "Xin chào",
+        introHeading: 'Tôi là <span class="text-cyan-300">kuzei13</span>, chỉ là một dev ngẫu nhiên ở Việt Nam.',
+        introDescription: "Mình dành kha khá thời gian để chơi game và nghịch code (dù không hẳn là mê lắm), nhưng đã làm thì vẫn phải chất lượng.",
+        dailyTitle: "Ngày thường của mình",
+        dailyItem1: "Hay chơi Roblox cực nhiều, đôi lúc chuyển qua Minecraft hay ULTRAKILL.",
+        dailyItem2: "Nghịch vài project linh tinh như bot Discord hay web meh cho vui.",
+        dailyItem3: "Online gần như 24/7 ở Discord hoặc TikTok vì mình thích thế lmao.",
+        contactTitle: "Liên hệ với mình"
+      },
+      en: {
+        greeting: "Hello there",
+        introHeading: 'I am <span class="text-cyan-300">kuzei13</span>, just a random dev from Vietnam.',
+        introDescription: "I spend plenty of time gaming and tinkering with code (even if it is not a full-on obsession), but I still want everything I ship to feel polished.",
+        dailyTitle: "What my days look like",
+        dailyItem1: "I grind Roblox way too much, occasionally swapping to Minecraft or ULTRAKILL.",
+        dailyItem2: "I poke at little side projects like Discord bots or quick throwaway sites for fun.",
+        dailyItem3: "I am basically online 24/7 on Discord or TikTok simply because it amuses me.",
+        contactTitle: "Reach me"
+      }
+    };
+
+    const toggleButton = document.getElementById("lang-toggle");
+    const translatableElements = document.querySelectorAll("[data-i18n]");
+    let currentLang = "vi";
+
+    const applyTranslations = (lang) => {
+      translatableElements.forEach((el) => {
+        const key = el.dataset.i18n;
+        const value = translations[lang][key];
+        if (!value) return;
+        if (el.dataset.i18nType === "html") {
+          el.innerHTML = value;
+        } else {
+          el.textContent = value;
+        }
+      });
+    };
+
+    toggleButton.addEventListener("click", () => {
+      currentLang = currentLang === "vi" ? "en" : "vi";
+      toggleButton.textContent = currentLang === "vi" ? "EN" : "VI";
+      applyTranslations(currentLang);
+    });
+
+    applyTranslations(currentLang);
+  </script>
+</body>
+</html>
