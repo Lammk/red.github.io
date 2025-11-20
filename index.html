@@ -6,130 +6,213 @@
   <title>kuzei13 | Giới thiệu</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <style>
+    :root {
+      color-scheme: dark;
+    }
     body {
       font-family: "Space Grotesk", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.15), transparent 50%), #020617;
-      color: #e2e8f0;
       min-height: 100vh;
+      background: radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.15), transparent 60%), #020617;
+      color: #e2e8f0;
     }
     .panel {
-      background: rgba(2, 6, 23, 0.85);
+      background: rgba(2, 6, 23, 0.88);
       border: 1px solid rgba(148, 163, 184, 0.2);
       border-radius: 1.5rem;
       padding: clamp(2rem, 4vw, 3rem);
-      box-shadow: 0 20px 45px rgba(2, 6, 23, 0.7);
+      box-shadow: 0 25px 60px rgba(2, 6, 23, 0.65);
     }
     .card {
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(15, 23, 42, 0.75);
       border: 1px solid rgba(148, 163, 184, 0.18);
       border-radius: 1.1rem;
-      padding: 1.4rem;
+      padding: 1.3rem;
     }
-    .link-tile {
+    .link-card {
       transition: transform 0.2s ease, border-color 0.2s ease;
     }
-    .link-tile:hover {
+    .link-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(103, 232, 249, 0.65);
+      border-color: rgba(103, 232, 249, 0.6);
+    }
+    #langToggle {
+      border-radius: 999px;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: rgba(15, 23, 42, 0.7);
+      color: #e0f2fe;
+    }
+    #langToggle:hover {
+      border-color: rgba(103, 232, 249, 0.7);
+      color: #bae6fd;
     }
   </style>
 </head>
-<body class="flex items-center justify-center px-6 py-10">
+<body class="flex items-center justify-center px-4 py-10">
   <main class="panel w-full max-w-3xl space-y-10">
+    <div class="flex justify-end">
+      <button id="langToggle">EN</button>
+    </div>
+
     <header class="space-y-4">
-      <div class="flex justify-end">
-        <button id="lang-toggle" class="px-4 py-1 text-xs font-semibold tracking-widest text-slate-900 bg-cyan-300 rounded-full transition hover:bg-cyan-200">
-          EN
-        </button>
-      </div>
-      <p class="text-sm uppercase tracking-[0.4em] text-slate-400" data-i18n="greeting">Xin chào</p>
-      <h1 class="text-4xl md:text-5xl font-semibold leading-tight" data-i18n="introHeading" data-i18n-type="html">
+      <p id="greeting" class="text-sm uppercase tracking-[0.4em] text-slate-400">Xin chào</p>
+      <h1 id="introHeading" class="text-4xl md:text-5xl font-semibold leading-tight">
         Tôi là <span class="text-cyan-300">kuzei13</span>, chỉ là một dev ngẫu nhiên ở Việt Nam.
       </h1>
-      <p class="text-lg text-slate-300" data-i18n="introDescription">
-        Mình dành kha khá thời gian để chơi game và nghịch code (dù không hẳn là mê lắm), nhưng đã làm thì vẫn phải chất lượng.
+      <p id="introText" class="text-lg text-slate-300">
+        Mình dành kha khá thời gian để chơi game và nghịch code (dù không hẳn là mê lắm), nhưng đã làm thì vẫn phải làm :v.
       </p>
     </header>
 
     <section class="card space-y-4">
-      <h2 class="text-xl font-semibold" data-i18n="dailyTitle">Ngày thường của mình</h2>
-      <ul class="space-y-3 text-slate-300 list-disc list-inside">
-        <li data-i18n="dailyItem1">Hay chơi Roblox cực nhiều, đôi lúc chuyển qua Minecraft hay ULTRAKILL.</li>
-        <li data-i18n="dailyItem2">Nghịch vài project linh tinh như bot Discord hay web meh cho vui.</li>
-        <li data-i18n="dailyItem3">Online gần như 24/7 ở Discord hoặc TikTok vì mình thích thế lmao.</li>
+      <h2 id="dailyTitle" class="text-xl font-semibold">Ngày thường của mình</h2>
+      <ul id="dailyList" class="space-y-3 text-slate-300 list-disc list-inside">
+        <li>Hay chơi Roblox rất nhiều, cũng có thể chuyển qua Minecraft hoặc ULTRAKILL gì đó.</li>
+        <li>Hay nghịch vài project, có thể là bot Discord, có thể là web meh.</li>
+        <li>Online 24/7 ở Discord hoặc TikTok vì mình thích thế lmao.</li>
       </ul>
     </section>
 
-    <section class="space-y-4">
-      <h2 class="text-2xl font-semibold" data-i18n="contactTitle">Liên hệ với mình</h2>
+    <section class="space-y-3">
+      <div>
+        <h2 id="contactTitle" class="text-2xl font-semibold">Liên hệ với mình</h2>
+        <p id="contactNote" class="text-sm text-slate-400">Bạn có thể tìm mình ở mấy nơi này:</p>
+      </div>
       <div class="grid gap-4 md:grid-cols-2">
-        <div class="card link-tile">
-          <p class="text-sm text-slate-400">Discord</p>
+        <div class="card link-card">
+          <p class="text-sm text-slate-400" data-label="discord">Discord</p>
           <a href="https://discord.com/users/meotoru" target="_blank" class="text-lg font-medium text-cyan-200">meotoru</a>
+          <p class="text-xs text-slate-500 mt-1" data-caption="discord">Nhắn mình khi nào thấy online.</p>
         </div>
-        <div class="card link-tile">
-          <p class="text-sm text-slate-400">YouTube</p>
+        <div class="card link-card">
+          <p class="text-sm text-slate-400" data-label="youtube">YouTube</p>
           <a href="https://youtube.com/@kuzei13" target="_blank" class="text-lg font-medium text-cyan-200">kuzei13</a>
+          <p class="text-xs text-slate-500 mt-1" data-caption="youtube">Nơi mình thỉnh thoảng đăng video.</p>
         </div>
-        <div class="card link-tile">
-          <p class="text-sm text-slate-400">TikTok</p>
+        <div class="card link-card">
+          <p class="text-sm text-slate-400" data-label="tiktok">TikTok</p>
           <a href="https://www.tiktok.com/@kuzei13.tiktok" target="_blank" class="text-lg font-medium text-cyan-200">kuzei13.tiktok</a>
+          <p class="text-xs text-slate-500 mt-1" data-caption="tiktok">Video dạo chơi cho vui thôi.</p>
         </div>
-        <div class="card link-tile">
-          <p class="text-sm text-slate-400">Email</p>
+        <div class="card link-card">
+          <p class="text-sm text-slate-400" data-label="email">Email</p>
           <a href="mailto:red@kuzei.xyz" class="text-lg font-medium text-cyan-200">red@kuzei.xyz</a>
+          <p class="text-xs text-slate-500 mt-1" data-caption="email">Gửi mình bất cứ lúc nào.</p>
+        </div>
+        <div class="card link-card md:col-span-2">
+          <p class="text-sm text-slate-400" data-label="telegram">Telegram</p>
+          <a href="https://t.me/kuzei13" target="_blank" class="text-lg font-medium text-cyan-200">@kuzei13</a>
+          <p class="text-xs text-slate-500 mt-1" data-caption="telegram">Inbox nếu cần trả lời nhanh.</p>
         </div>
       </div>
     </section>
   </main>
+
   <script>
-    const translations = {
+    const textContent = {
       vi: {
         greeting: "Xin chào",
         introHeading: 'Tôi là <span class="text-cyan-300">kuzei13</span>, chỉ là một dev ngẫu nhiên ở Việt Nam.',
-        introDescription: "Mình dành kha khá thời gian để chơi game và nghịch code (dù không hẳn là mê lắm), nhưng đã làm thì vẫn phải chất lượng.",
+        introText: "Mình dành kha khá thời gian để chơi game và nghịch code (dù không hẳn là mê lắm), nhưng đã làm thì vẫn phải chất lượng.",
         dailyTitle: "Ngày thường của mình",
-        dailyItem1: "Hay chơi Roblox cực nhiều, đôi lúc chuyển qua Minecraft hay ULTRAKILL.",
-        dailyItem2: "Nghịch vài project linh tinh như bot Discord hay web meh cho vui.",
-        dailyItem3: "Online gần như 24/7 ở Discord hoặc TikTok vì mình thích thế lmao.",
-        contactTitle: "Liên hệ với mình"
+        contactTitle: "Liên hệ với mình",
+        contactNote: "Bạn có thể tìm mình ở mấy nơi này:",
       },
       en: {
-        greeting: "Hello there",
-        introHeading: 'I am <span class="text-cyan-300">kuzei13</span>, just a random dev from Vietnam.',
-        introDescription: "I spend plenty of time gaming and tinkering with code (even if it is not a full-on obsession), but I still want everything I ship to feel polished.",
-        dailyTitle: "What my days look like",
-        dailyItem1: "I grind Roblox way too much, occasionally swapping to Minecraft or ULTRAKILL.",
-        dailyItem2: "I poke at little side projects like Discord bots or quick throwaway sites for fun.",
-        dailyItem3: "I am basically online 24/7 on Discord or TikTok simply because it amuses me.",
-        contactTitle: "Reach me"
+        greeting: "Hello",
+        introHeading: 'I\'m <span class="text-cyan-300">kuzei13</span>, just a random dev in Vietnam.',
+        introText: "I spend plenty of time playing games and poking at code (not that I'm obsessed), but I still keep things polished.",
+        dailyTitle: "My daily habits",
+        contactTitle: "Reach me",
+        contactNote: "You can catch me here:",
       }
     };
 
-    const toggleButton = document.getElementById("lang-toggle");
-    const translatableElements = document.querySelectorAll("[data-i18n]");
-    let currentLang = "vi";
-
-    const applyTranslations = (lang) => {
-      translatableElements.forEach((el) => {
-        const key = el.dataset.i18n;
-        const value = translations[lang][key];
-        if (!value) return;
-        if (el.dataset.i18nType === "html") {
-          el.innerHTML = value;
-        } else {
-          el.textContent = value;
-        }
-      });
+    const dailyContent = {
+      vi: [
+        "Hay chơi Roblox rất nhiều, cũng có thể chuyển qua Minecraft hoặc ULTRAKILL gì đó.",
+        "Hay nghịch vài project, có thể là bot Discord, có thể là web meh.",
+        "Online 24/7 ở Discord hoặc TikTok vì mình thích thế lmao."
+      ],
+      en: [
+        "Play tons of Roblox, and maybe switch to Minecraft or ULTRAKILL sometimes.",
+        "Tinker with projects—maybe a Discord bot, maybe some meh website.",
+        "Online 24/7 on Discord or TikTok just because I feel like it lol."
+      ]
     };
 
-    toggleButton.addEventListener("click", () => {
-      currentLang = currentLang === "vi" ? "en" : "vi";
-      toggleButton.textContent = currentLang === "vi" ? "EN" : "VI";
-      applyTranslations(currentLang);
+    const contactText = {
+      vi: {
+        discord: { label: "Discord", caption: "Nhắn mình khi nào thấy online." },
+        youtube: { label: "YouTube", caption: "Nơi mình thỉnh thoảng đăng video." },
+        tiktok: { label: "TikTok", caption: "Video dạo chơi cho vui thôi." },
+        email: { label: "Email", caption: "Gửi mình bất cứ lúc nào." },
+        telegram: { label: "Telegram", caption: "Inbox nếu cần trả lời nhanh." }
+      },
+      en: {
+        discord: { label: "Discord", caption: "Ping me whenever you see me online." },
+        youtube: { label: "YouTube", caption: "Where I occasionally drop videos." },
+        tiktok: { label: "TikTok", caption: "Random short clips just for fun." },
+        email: { label: "Email", caption: "Send me a message anytime." },
+        telegram: { label: "Telegram", caption: "DM me there if you need a quick reply." }
+      }
+    };
+
+    const refs = {
+      greeting: document.getElementById('greeting'),
+      introHeading: document.getElementById('introHeading'),
+      introText: document.getElementById('introText'),
+      dailyTitle: document.getElementById('dailyTitle'),
+      contactTitle: document.getElementById('contactTitle'),
+      contactNote: document.getElementById('contactNote'),
+      dailyList: document.getElementById('dailyList'),
+      langToggle: document.getElementById('langToggle'),
+      labelNodes: document.querySelectorAll('[data-label]'),
+      captionNodes: document.querySelectorAll('[data-caption]')
+    };
+
+    let currentLang = 'vi';
+
+    function renderLanguage(lang) {
+      const copy = textContent[lang];
+      refs.greeting.textContent = copy.greeting;
+      refs.introHeading.innerHTML = copy.introHeading;
+      refs.introText.textContent = copy.introText;
+      refs.dailyTitle.textContent = copy.dailyTitle;
+      refs.contactTitle.textContent = copy.contactTitle;
+      refs.contactNote.textContent = copy.contactNote;
+
+      refs.dailyList.innerHTML = '';
+      dailyContent[lang].forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        refs.dailyList.appendChild(li);
+      });
+
+      refs.labelNodes.forEach(node => {
+        const key = node.dataset.label;
+        node.textContent = contactText[lang][key].label;
+      });
+
+      refs.captionNodes.forEach(node => {
+        const key = node.dataset.caption;
+        node.textContent = contactText[lang][key].caption;
+      });
+
+      refs.langToggle.textContent = lang === 'vi' ? 'EN' : 'VI';
+      document.documentElement.lang = lang;
+      currentLang = lang;
+    }
+
+    refs.langToggle.addEventListener('click', () => {
+      const nextLang = currentLang === 'vi' ? 'en' : 'vi';
+      renderLanguage(nextLang);
     });
 
-    applyTranslations(currentLang);
+    renderLanguage(currentLang);
   </script>
 </body>
 </html>
