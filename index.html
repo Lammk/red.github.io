@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>kuzei</title>
+  <title>kuzei13 | Giới thiệu</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <style>
     :root {
@@ -28,12 +28,37 @@
       border-radius: 1.1rem;
       padding: 1.3rem;
     }
-    .link-card {
-      transition: transform 0.2s ease, border-color 0.2s ease;
+    .contact-list {
+      display: grid;
+      gap: 0.9rem;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
     }
-    .link-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(103, 232, 249, 0.6);
+    .contact-item {
+      display: block;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 1rem;
+      padding: 0.95rem 1.1rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .contact-item:hover {
+      border-color: rgba(103, 232, 249, 0.7);
+      transform: translateY(-2px);
+    }
+    .contact-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(148, 163, 184, 0.9);
+    }
+    .contact-handle {
+      display: inline-block;
+      margin-top: 0.2rem;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #7dd3fc;
     }
     #langToggle {
       border-radius: 999px;
@@ -63,7 +88,7 @@
         Tôi là <span class="text-cyan-300">kuzei13</span>, chỉ là một dev ngẫu nhiên ở Việt Nam.
       </h1>
       <p id="introText" class="text-lg text-slate-300">
-        Mình dành kha khá thời gian để chơi game và nghịch code (dù không hẳn là mê lắm), nhưng đã làm thì vẫn phải làm :v.
+        Mình dành kha khá thời gian để chơi game và nghịch code (dù không hẳn là mê lắm), nhưng đã làm thì vẫn phải chất lượng.
       </p>
     </header>
 
@@ -81,32 +106,37 @@
         <h2 id="contactTitle" class="text-2xl font-semibold">Liên hệ với mình</h2>
         <p id="contactNote" class="text-sm text-slate-400">Bạn có thể tìm mình ở mấy nơi này:</p>
       </div>
-      <div class="grid gap-4 md:grid-cols-2">
-        <div class="card link-card">
-          <p class="text-sm text-slate-400" data-label="discord">Discord</p>
-          <a href="https://discord.com/users/meotoru" target="_blank" class="text-lg font-medium text-cyan-200">meotoru</a>
+      <div class="contact-list">
+        <a class="contact-item" href="https://discord.com/users/meotoru" target="_blank" rel="noopener">
+          <p class="contact-label" data-label="discord">Discord</p>
+          <span class="contact-handle">meotoru</span>
           <p class="text-xs text-slate-500 mt-1" data-caption="discord">Nhắn mình khi nào thấy online.</p>
-        </div>
-        <div class="card link-card">
-          <p class="text-sm text-slate-400" data-label="youtube">YouTube</p>
-          <a href="https://youtube.com/@kuzei13" target="_blank" class="text-lg font-medium text-cyan-200">kuzei13</a>
+        </a>
+        <a class="contact-item" href="https://youtube.com/@kuzei13" target="_blank" rel="noopener">
+          <p class="contact-label" data-label="youtube">YouTube</p>
+          <span class="contact-handle">kuzei13</span>
           <p class="text-xs text-slate-500 mt-1" data-caption="youtube">Nơi mình thỉnh thoảng đăng video.</p>
-        </div>
-        <div class="card link-card">
-          <p class="text-sm text-slate-400" data-label="tiktok">TikTok</p>
-          <a href="https://www.tiktok.com/@kuzei13.tiktok" target="_blank" class="text-lg font-medium text-cyan-200">kuzei13.tiktok</a>
+        </a>
+        <a class="contact-item" href="https://www.tiktok.com/@kuzei13.tiktok" target="_blank" rel="noopener">
+          <p class="contact-label" data-label="tiktok">TikTok</p>
+          <span class="contact-handle">kuzei13.tiktok</span>
           <p class="text-xs text-slate-500 mt-1" data-caption="tiktok">Video dạo chơi cho vui thôi.</p>
-        </div>
-        <div class="card link-card">
-          <p class="text-sm text-slate-400" data-label="email">Email</p>
-          <a href="mailto:red@kuzei.xyz" class="text-lg font-medium text-cyan-200">red@kuzei.xyz</a>
+        </a>
+        <a class="contact-item" href="https://facebook.com/kuzei13" target="_blank" rel="noopener">
+          <p class="contact-label" data-label="facebook">Facebook</p>
+          <span class="contact-handle">@kuzei13</span>
+          <p class="text-xs text-slate-500 mt-1" data-caption="facebook">Nhắn mình ở đó cũng được.</p>
+        </a>
+        <a class="contact-item" href="mailto:red@kuzei.xyz">
+          <p class="contact-label" data-label="email">Email</p>
+          <span class="contact-handle">red@kuzei.xyz</span>
           <p class="text-xs text-slate-500 mt-1" data-caption="email">Gửi mình bất cứ lúc nào.</p>
-        </div>
-        <div class="card link-card md:col-span-2">
-          <p class="text-sm text-slate-400" data-label="telegram">Telegram</p>
-          <a href="https://t.me/kuzei13" target="_blank" class="text-lg font-medium text-cyan-200">@kuzei13</a>
+        </a>
+        <a class="contact-item" href="https://t.me/kuzei13" target="_blank" rel="noopener">
+          <p class="contact-label" data-label="telegram">Telegram</p>
+          <span class="contact-handle">@kuzei13</span>
           <p class="text-xs text-slate-500 mt-1" data-caption="telegram">Inbox nếu cần trả lời nhanh.</p>
-        </div>
+        </a>
       </div>
     </section>
   </main>
@@ -115,7 +145,7 @@
     const textContent = {
       vi: {
         greeting: "Xin chào",
-        introHeading: 'Mình là <span class="text-cyan-300">kuzei13</span>, chỉ là một dev ngẫu nhiên ở Việt Nam.',
+        introHeading: 'Tôi là <span class="text-cyan-300">kuzei13</span>, chỉ là một dev ngẫu nhiên ở Việt Nam.',
         introText: "Mình dành kha khá thời gian để chơi game và nghịch code (dù không hẳn là mê lắm), nhưng đã làm thì vẫn phải chất lượng.",
         dailyTitle: "Ngày thường của mình",
         contactTitle: "Liên hệ với mình",
@@ -149,6 +179,7 @@
         discord: { label: "Discord", caption: "Nhắn mình khi nào thấy online." },
         youtube: { label: "YouTube", caption: "Nơi mình thỉnh thoảng đăng video." },
         tiktok: { label: "TikTok", caption: "Video dạo chơi cho vui thôi." },
+        facebook: { label: "Facebook", caption: "Nhắn mình ở đó cũng được." },
         email: { label: "Email", caption: "Gửi mình bất cứ lúc nào." },
         telegram: { label: "Telegram", caption: "Inbox nếu cần trả lời nhanh." }
       },
@@ -156,6 +187,7 @@
         discord: { label: "Discord", caption: "Ping me whenever you see me online." },
         youtube: { label: "YouTube", caption: "Where I occasionally drop videos." },
         tiktok: { label: "TikTok", caption: "Random short clips just for fun." },
+        facebook: { label: "Facebook", caption: "Drop me a message there too." },
         email: { label: "Email", caption: "Send me a message anytime." },
         telegram: { label: "Telegram", caption: "DM me there if you need a quick reply." }
       }
