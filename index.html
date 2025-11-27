@@ -9,133 +9,165 @@
     :root {
       color-scheme: dark;
     }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: "Space Grotesk", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
       min-height: 100vh;
-      background: radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.15), transparent 60%), #020617;
-      color: #e2e8f0;
+      display: flex;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      font-family: "Space Grotesk", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #000;
+      color: #f5f5f5;
     }
-    .panel {
-      background: rgba(2, 6, 23, 0.88);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      border-radius: 1.5rem;
-      padding: clamp(2rem, 4vw, 3rem);
-      box-shadow: 0 25px 60px rgba(2, 6, 23, 0.65);
+
+    .shell {
+      width: 100%;
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
     }
-    .card {
-      background: rgba(15, 23, 42, 0.75);
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      border-radius: 1.1rem;
-      padding: 1.3rem;
+
+    .toolbar {
+      display: flex;
+      justify-content: flex-end;
     }
-    .contact-list {
-      display: grid;
-      gap: 0.9rem;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-    }
-    .contact-item {
-      display: block;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      border-radius: 1rem;
-      padding: 0.95rem 1.1rem;
-      text-decoration: none;
-      color: inherit;
-      transition: border-color 0.2s ease, transform 0.2s ease;
-    }
-    .contact-item:hover {
-      border-color: rgba(103, 232, 249, 0.7);
-      transform: translateY(-2px);
-    }
-    .contact-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(148, 163, 184, 0.9);
-    }
-    .contact-handle {
-      display: inline-block;
-      margin-top: 0.2rem;
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: #7dd3fc;
-    }
+
     #langToggle {
       border-radius: 999px;
-      padding: 0.4rem 1.1rem;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
+      padding: 0.3rem 1rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      background: rgba(15, 23, 42, 0.7);
-      color: #e0f2fe;
+      border: 1px solid #1f1f1f;
+      background: transparent;
+      color: #f5f5f5;
+      transition: color 0.2s ease, border-color 0.2s ease;
     }
+
     #langToggle:hover {
-      border-color: rgba(103, 232, 249, 0.7);
-      color: #bae6fd;
+      color: #38bdf8;
+      border-color: #38bdf8;
+    }
+
+    .block {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      font-size: 0.75rem;
+      color: #6f6f6f;
+    }
+
+    .title {
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 3.2rem);
+      line-height: 1.15;
+    }
+
+    .lead {
+      margin: 0;
+      color: #cbd5f5;
+      line-height: 1.6;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .muted {
+      margin: 0;
+      color: #8a8a8a;
+      font-size: 0.9rem;
+    }
+
+    .contact-list {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .contact-item:hover .contact-handle {
+      color: #38bdf8;
+    }
+
+    .contact-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #6b6b6b;
+    }
+
+    .contact-handle {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #f5f5f5;
     }
   </style>
 </head>
-<body class="flex items-center justify-center px-4 py-10">
-  <main class="panel w-full max-w-3xl space-y-10">
-    <div class="flex justify-end">
+<body>
+  <main class="shell">
+    <div class="toolbar">
       <button id="langToggle">EN</button>
     </div>
 
-    <header class="space-y-4">
-      <p id="greeting" class="text-sm uppercase tracking-[0.4em] text-slate-400">Xin chào</p>
-      <h1 id="introHeading" class="text-4xl md:text-5xl font-semibold leading-tight">
-        Tôi là <span class="text-cyan-300">kuzei13</span>, chỉ là một dev ngẫu nhiên ở Việt Nam.
+    <header class="block">
+      <span id="greeting" class="eyebrow">Xin chào</span>
+      <h1 id="introHeading" class="title">
+        Mình là kuzei, mình chơi game nhiều hơn học và mình là người Việt Nam.
       </h1>
-      <p id="introText" class="text-lg text-slate-300">
-        Mình dành kha khá thời gian để chơi game và nghịch code (dù không hẳn là mê lắm), nhưng đã làm thì vẫn phải chất lượng.
+      <p id="introText" class="lead">
+        Mình xem tiktok và sử dụng discord 24/7 và có vài lúc chơi game liên tục 4-5 tiếng gì đó hoặc vẫn cứ code thôi
       </p>
     </header>
 
-    <section class="card space-y-4">
-      <h2 id="dailyTitle" class="text-xl font-semibold">Ngày thường của mình</h2>
-      <ul id="dailyList" class="space-y-3 text-slate-300 list-disc list-inside">
-        <li>Hay chơi Roblox rất nhiều, cũng có thể chuyển qua Minecraft hoặc ULTRAKILL gì đó.</li>
-        <li>Hay nghịch vài project, có thể là bot Discord, có thể là web meh.</li>
-        <li>Online 24/7 ở Discord hoặc TikTok vì mình thích thế lmao.</li>
-      </ul>
-    </section>
-
-    <section class="space-y-3">
-      <div>
-        <h2 id="contactTitle" class="text-2xl font-semibold">Liên hệ với mình</h2>
-        <p id="contactNote" class="text-sm text-slate-400">Bạn có thể tìm mình ở mấy nơi này:</p>
-      </div>
+    <section class="block">
+      <span id="contactEyebrow" class="eyebrow">Contact</span>
+      <h2 id="contactTitle" class="section-title">Liên hệ với mình</h2>
+      <p id="contactNote" class="muted">Bạn có thể tìm mình ở mấy nơi này:</p>
       <div class="contact-list">
-        <a class="contact-item" href="https://discord.com/users/meotoru" target="_blank" rel="noopener">
-          <p class="contact-label" data-label="discord">Discord</p>
-          <span class="contact-handle">meotoru</span>
-          <p class="text-xs text-slate-500 mt-1" data-caption="discord">Nhắn mình khi nào thấy online.</p>
+        <a class="contact-item" href="https://discord.com/users/kuzei13" target="_blank" rel="noopener">
+          <span class="contact-label" data-label="discord">Discord</span>
+          <span class="contact-handle">kuzei13</span>
         </a>
         <a class="contact-item" href="https://youtube.com/@kuzei13" target="_blank" rel="noopener">
-          <p class="contact-label" data-label="youtube">YouTube</p>
+          <span class="contact-label" data-label="youtube">YouTube</span>
           <span class="contact-handle">kuzei13</span>
-          <p class="text-xs text-slate-500 mt-1" data-caption="youtube">Nơi mình thỉnh thoảng đăng video.</p>
         </a>
         <a class="contact-item" href="https://www.tiktok.com/@kuzei13.tiktok" target="_blank" rel="noopener">
-          <p class="contact-label" data-label="tiktok">TikTok</p>
+          <span class="contact-label" data-label="tiktok">TikTok</span>
           <span class="contact-handle">kuzei13.tiktok</span>
-          <p class="text-xs text-slate-500 mt-1" data-caption="tiktok">Video dạo chơi cho vui thôi.</p>
         </a>
         <a class="contact-item" href="https://facebook.com/kuzei13" target="_blank" rel="noopener">
-          <p class="contact-label" data-label="facebook">Facebook</p>
+          <span class="contact-label" data-label="facebook">Facebook</span>
           <span class="contact-handle">@kuzei13</span>
-          <p class="text-xs text-slate-500 mt-1" data-caption="facebook">Nhắn mình ở đó cũng được.</p>
         </a>
         <a class="contact-item" href="mailto:red@kuzei.xyz">
-          <p class="contact-label" data-label="email">Email</p>
+          <span class="contact-label" data-label="email">Email</span>
           <span class="contact-handle">red@kuzei.xyz</span>
-          <p class="text-xs text-slate-500 mt-1" data-caption="email">Gửi mình bất cứ lúc nào.</p>
         </a>
         <a class="contact-item" href="https://t.me/kuzei13" target="_blank" rel="noopener">
-          <p class="contact-label" data-label="telegram">Telegram</p>
+          <span class="contact-label" data-label="telegram">Telegram</span>
           <span class="contact-handle">@kuzei13</span>
-          <p class="text-xs text-slate-500 mt-1" data-caption="telegram">Inbox nếu cần trả lời nhanh.</p>
         </a>
       </div>
     </section>
@@ -145,51 +177,38 @@
     const textContent = {
       vi: {
         greeting: "Xin chào",
-        introHeading: 'Tôi là <span class="text-cyan-300">kuzei13</span>, chỉ là một dev ngẫu nhiên ở Việt Nam.',
-        introText: "Mình dành kha khá thời gian để chơi game và nghịch code (dù không hẳn là mê lắm), nhưng đã làm thì vẫn phải chất lượng.",
-        dailyTitle: "Ngày thường của mình",
+        introHeading: 'Mình là kuzei, mình chơi game nhiều hơn học và mình là người Việt Nam.',
+        introText: "Mình xem tiktok và sử dụng discord 24/7 và có vài lúc chơi game liên tục 4-5 tiếng gì đó hoặc vẫn cứ code thôi",
+        contactEyebrow: "Contact",
         contactTitle: "Liên hệ với mình",
-        contactNote: "Bạn có thể tìm mình ở mấy nơi này:",
+        contactNote: "Bạn có thể tìm mình ở mấy nơi này:"
       },
       en: {
         greeting: "Hello",
-        introHeading: 'I\'m <span class="text-cyan-300">kuzei13</span>, just a random dev in Vietnam.',
-        introText: "I spend plenty of time playing games and poking at code (not that I'm obsessed), but I still keep things polished.",
-        dailyTitle: "My daily habits",
+        introHeading: "I'm kuzei, I game more than I study and I'm from Vietnam.",
+        introText: "I scroll TikTok and live on Discord 24/7, sometimes gaming 4-5 hours straight or just keep coding anyway.",
+        contactEyebrow: "Contact",
         contactTitle: "Reach me",
-        contactNote: "You can catch me here:",
+        contactNote: "Find me at these spots:"
       }
-    };
-
-    const dailyContent = {
-      vi: [
-        "Hay chơi Roblox rất nhiều, cũng có thể chuyển qua Minecraft hoặc ULTRAKILL gì đó.",
-        "Hay nghịch vài project, có thể là bot Discord, có thể là web meh.",
-        "Online 24/7 ở Discord hoặc TikTok vì mình thích thế lmao."
-      ],
-      en: [
-        "Play tons of Roblox, and maybe switch to Minecraft or ULTRAKILL sometimes.",
-        "Tinker with projects—maybe a Discord bot, maybe some meh website.",
-        "Online 24/7 on Discord or TikTok just because I feel like it lol."
-      ]
     };
 
     const contactText = {
       vi: {
-        discord: { label: "Discord", caption: "Nhắn mình khi nào thấy online." },
-        youtube: { label: "YouTube", caption: "Nơi mình thỉnh thoảng đăng video." },
-        tiktok: { label: "TikTok", caption: "Video dạo chơi cho vui thôi." },
-        facebook: { label: "Facebook", caption: "Nhắn mình ở đó cũng được." },
-        email: { label: "Email", caption: "Gửi mình bất cứ lúc nào." },
-        telegram: { label: "Telegram", caption: "Inbox nếu cần trả lời nhanh." }
+        discord: "Discord",
+        youtube: "YouTube",
+        tiktok: "TikTok",
+        facebook: "Facebook",
+        email: "Email",
+        telegram: "Telegram"
       },
       en: {
-        discord: { label: "Discord", caption: "Ping me whenever you see me online." },
-        youtube: { label: "YouTube", caption: "Where I occasionally drop videos." },
-        tiktok: { label: "TikTok", caption: "Random short clips just for fun." },
-        facebook: { label: "Facebook", caption: "Drop me a message there too." },
-        email: { label: "Email", caption: "Send me a message anytime." },
-        telegram: { label: "Telegram", caption: "DM me there if you need a quick reply." }
+        discord: "Discord",
+        youtube: "YouTube",
+        tiktok: "TikTok",
+        facebook: "Facebook",
+        email: "Email",
+        telegram: "Telegram"
       }
     };
 
@@ -197,13 +216,11 @@
       greeting: document.getElementById('greeting'),
       introHeading: document.getElementById('introHeading'),
       introText: document.getElementById('introText'),
-      dailyTitle: document.getElementById('dailyTitle'),
+      contactEyebrow: document.getElementById('contactEyebrow'),
       contactTitle: document.getElementById('contactTitle'),
       contactNote: document.getElementById('contactNote'),
-      dailyList: document.getElementById('dailyList'),
       langToggle: document.getElementById('langToggle'),
-      labelNodes: document.querySelectorAll('[data-label]'),
-      captionNodes: document.querySelectorAll('[data-caption]')
+      labelNodes: document.querySelectorAll('[data-label]')
     };
 
     let currentLang = 'vi';
@@ -213,25 +230,13 @@
       refs.greeting.textContent = copy.greeting;
       refs.introHeading.innerHTML = copy.introHeading;
       refs.introText.textContent = copy.introText;
-      refs.dailyTitle.textContent = copy.dailyTitle;
+      refs.contactEyebrow.textContent = copy.contactEyebrow;
       refs.contactTitle.textContent = copy.contactTitle;
       refs.contactNote.textContent = copy.contactNote;
 
-      refs.dailyList.innerHTML = '';
-      dailyContent[lang].forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        refs.dailyList.appendChild(li);
-      });
-
       refs.labelNodes.forEach(node => {
         const key = node.dataset.label;
-        node.textContent = contactText[lang][key].label;
-      });
-
-      refs.captionNodes.forEach(node => {
-        const key = node.dataset.caption;
-        node.textContent = contactText[lang][key].caption;
+        node.textContent = contactText[lang][key];
       });
 
       refs.langToggle.textContent = lang === 'vi' ? 'EN' : 'VI';
